@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ClinicaMVC.Models.especialidades>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center" >Tabla Especialidad</h2>
+
+<p class="text-center">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-secondary" })
+</p>
+<table class="table" style="border: 1px solid #000000; background-color: #f2f2f2;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Franja_HI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Franja_HF)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Franja_HI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Franja_HF)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdEspecialidad }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdEspecialidad }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdEspecialidad }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

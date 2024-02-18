@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ClinicaMVC.Models.consultas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Tabla de Consultas</h2>
+
+<p class="text-center">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-secondary" })
+
+</p>
+<table class="table" style="border: 1px solid #000000; background-color: #f2f2f2;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaConsulta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diagnostico)
+        </th>
+        <th>
+            Nombre de Paciente 
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.medicos.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaConsulta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diagnostico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pacientes.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.medicos.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IdConsulta }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IdConsulta }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IdConsulta }, new { @class = "btn btn-danger" })
+
+        </td>
+    </tr>
+}
+
+</table>
